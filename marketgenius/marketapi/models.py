@@ -13,6 +13,6 @@ class Ticket(models.Model):
     products = models.ManyToManyField(Product)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
     
 
