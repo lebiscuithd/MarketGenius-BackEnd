@@ -9,30 +9,33 @@ class ProductViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         product = Product.objects.all()
-        return product      
+        return product
+
 
 class TicketViewSet(viewsets.ModelViewSet):
     serializer_class = TicketSerializer
 
     def get_queryset(self):
         ticket = Ticket.objects.all()
-        return ticket   
+        return ticket
 
-    def create(self, request, *args, **kwargs): 
+    def create(self, request, *args, **kwargs):
         data = request.data
 
         new_ticket = Ticket.objects.create(
             total_price=data["total_price"])
 
         new_ticket.save()
-        
+
         new_ticket_id = Ticket.objects.last().id
 
         for receiptproduct in data["products"]:
             new_receiptproduct = ReceiptProduct.objects.create(
-                quantity=receiptproduct["quantity"], product_id=receiptproduct["product_id"], ticket_id=new_ticket_id)
+                quantity=receiptproduct["quantity"],
+                product_id=receiptproduct["product_id"],
+                ticket_id=new_ticket_id)
 
-            new_receiptproduct.save() 
+            new_receiptproduct.save()
 
         serializer = TicketSerializer(new_ticket)
-        return Response(serializer.data)    
+        return Response(serializer.data)
