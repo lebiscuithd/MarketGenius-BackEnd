@@ -7,8 +7,8 @@ from PIL import Image
 class Product(models.Model):
     product_name = models.CharField(max_length=50)
     product_price = models.FloatField()
-    product_image = models.ImageField(upload_to='media/uploads/', blank=True, null=True)
-    product_thumbnail = models.ImageField(upload_to='media/uploads/', blank=True, null=True)
+    product_image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    product_thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
 
 
     def __str__(self):
