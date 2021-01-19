@@ -17,7 +17,7 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'product_name', 'product_price']
+        fields = ['id', 'product_name', 'product_price', 'product_thumbnail']
 
 
 class TicketSerializer(serializers.ModelSerializer):
