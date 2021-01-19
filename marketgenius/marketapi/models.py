@@ -1,9 +1,15 @@
+from io import BytesIO
+from django.core.files import File
 from django.db import models
+from PIL import Image
 
 
 class Product(models.Model):
     product_name = models.CharField(max_length=50)
     product_price = models.FloatField()
+    product_image = models.ImageField(blank=True, null=True)
+    product_thumbnail = models.ImageField(blank=True, null=True)
+
 
     def __str__(self):
         return self.product_name
