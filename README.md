@@ -59,6 +59,6 @@ http://localhost:8000/tickets/{id}/
 
 ````
 
-## Back-End repository
+## Front repository
 
 You can find the back-end project built with Django Rest here : https://github.com/lebiscuithd/MarketGenius-FrontEnd
