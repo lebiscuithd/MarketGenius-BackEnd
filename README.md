@@ -24,8 +24,6 @@ python3 manage.py runserver
 
 This project works with a sqlite database.
 
-### Database schema
-
 
 ## API REST
 
