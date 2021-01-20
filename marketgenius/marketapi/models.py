@@ -3,12 +3,20 @@ from django.core.files import File
 from django.db import models
 from PIL import Image
 
+class Promotion(models.Model):
+    promotion_name = models.CharField(max_length=50)
+    promotion_remise = models.IntegerField(blank=True, null=True)
+    promotion_free = models.IntegerField(blank=True, null=True)
+    
+    def __str__(self):
+        return str(self.promotion_name)
 
 class Product(models.Model):
     product_name = models.CharField(max_length=50)
     product_price = models.FloatField()
     product_image = models.ImageField(upload_to='uploads/', blank=True, null=True)
     product_thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    product_promotion = models.ForeignKey(Promotion, on_delete=models.CASCADE, blank=True, null=True)
 
 
     def __str__(self):
@@ -45,3 +53,4 @@ class ReceiptProduct(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     ticket = models.ForeignKey(Ticket, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+

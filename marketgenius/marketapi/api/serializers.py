@@ -1,6 +1,12 @@
 from rest_framework import serializers
-from marketapi.models import Product, Ticket, ReceiptProduct
+from marketapi.models import Product, Ticket, ReceiptProduct, Promotion
 
+
+class PromotionSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Promotion
+        fields = ['id', 'promotion_remise', 'promotion_free', 'promotion_name']
 
 class ReceiptProductSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -15,9 +21,11 @@ class ReceiptProductSerializer(serializers.HyperlinkedModelSerializer):
 
 class ProductSerializer(serializers.ModelSerializer):
 
+    product_promotion = PromotionSerializer()
+
     class Meta:
         model = Product
-        fields = ['id', 'product_name', 'product_price', 'product_thumbnail']
+        fields = ['id', 'product_name', 'product_price', 'product_thumbnail', 'product_promotion']
 
 
 class TicketSerializer(serializers.ModelSerializer):
