@@ -4,17 +4,19 @@ This project is the backend part built with Django REST of an e-commerce applica
 
 ## Build Setup
 
+This project use Python 3.8.6
+
 ``` bash
 # It is best to use the python virtualenv tool to build locally:
 
-sudo pip install virtualenv
+sudo pip3 install virtualenv
 
 # Then in your project folder:
 
 virtualenv newenv
 source newenv/bin/activate
-pip install -r requirements.txt
-python manage.py runserver
+pip3 install -r requirements.txt
+python3 manage.py runserver
 
 ```
 
